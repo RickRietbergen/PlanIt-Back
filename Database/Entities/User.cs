@@ -1,4 +1,4 @@
-﻿using System.Data;
+﻿using SecureVault.Database.Enums;
 
 namespace SecureVault.Database.Entities
 {
