@@ -14,6 +14,7 @@ namespace PlanIt.Controllers
     public class AuthController : BaseController
     {
         private readonly PlanItContext dataContext;
+        private readonly IConfiguration configuration;
         private readonly JWTService jwtService;
         private readonly AesService aesService;
 
@@ -51,8 +52,6 @@ namespace PlanIt.Controllers
 
             newUser.PublicKey = publicKeyBase64Encoded;
             newUser.EncryptedPrivateKey = aesService.EncryptString(model.Password, privateKeyBase64Encoded);
-
-            newUser.PrivateProfile = true;
 
             dataContext.Users.Add(newUser);
             dataContext.SaveChanges();
