@@ -9,7 +9,7 @@ namespace PlanIt.Database.JWT.Attributes
     public class JWTAuth : Attribute, IAuthorizationFilter
     {
         private readonly JWTService jwtService;
-        private readonly string secret = "8992654891097519";
+        private readonly string secret = "8972654891097519";
 
         public JWTAuth()
         {
