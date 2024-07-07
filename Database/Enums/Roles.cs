@@ -1,4 +1,4 @@
-﻿namespace SecureVault.Database.Enums
+﻿namespace PlanIt.Database.Enums
 {
     public enum Role
     {

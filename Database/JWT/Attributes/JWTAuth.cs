@@ -1,4 +1,4 @@
-﻿namespace SecureVault.Database.JWT.Attributes
+﻿namespace PlanIt.Database.JWT.Attributes
 {
     public class JWTAuth
     {

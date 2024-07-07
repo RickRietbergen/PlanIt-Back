@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace SecureVault.Controllers
+namespace PlanIt.Controllers
 {
     [ApiController]
     [Route("[controller]")]

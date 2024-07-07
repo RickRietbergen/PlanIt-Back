@@ -1,4 +1,4 @@
-﻿namespace SecureVault.Database.JWT.Services
+﻿namespace PlanIt.Database.JWT.Services
 {
     public class JWTService
     {

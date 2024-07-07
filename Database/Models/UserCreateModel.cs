@@ -1,4 +1,4 @@
-﻿namespace SecureVault.Database.Models
+﻿namespace PlanIt.Database.Models
 {
     public class UserCreateModel
     {

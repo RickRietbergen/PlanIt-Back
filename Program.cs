@@ -1,5 +1,5 @@
 
-namespace SecureVault
+namespace PlanIt
 {
     public class Program
     {

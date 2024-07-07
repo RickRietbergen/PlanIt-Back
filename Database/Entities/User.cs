@@ -1,6 +1,6 @@
-﻿using SecureVault.Database.Enums;
+﻿using PlanIt.Database.Enums;
 
-namespace SecureVault.Database.Entities
+namespace PlanIt.Database.Entities
 {
     public class User
     {
