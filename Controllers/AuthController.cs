@@ -16,14 +16,12 @@ namespace PlanIt.Controllers
         private readonly PlanItContext dataContext;
         private readonly IConfiguration configuration;
         private readonly JWTService jwtService;
-        private readonly AesService aesService;
 
         public AuthController(PlanItContext dataContext, IConfiguration configuration)
         {
             this.dataContext = dataContext;
             this.configuration = configuration;
             jwtService = new JWTService(configuration.GetSection("AppSettings:Token").Value);
-            aesService = new AesService();
         }
 
         [HttpPost("register")]
@@ -42,16 +40,6 @@ namespace PlanIt.Controllers
             newUser.Username = model.Username;
             newUser.PasswordHash = passwordHash;
             newUser.PasswordSalt = passwordSalt;
-
-            using var rsa = RSA.Create();
-            byte[] privateKeyPkcs8 = rsa.ExportPkcs8PrivateKey();
-            byte[] publicKey = rsa.ExportSubjectPublicKeyInfo();
-
-            string publicKeyBase64Encoded = Convert.ToBase64String(publicKey);
-            string privateKeyBase64Encoded = Convert.ToBase64String(privateKeyPkcs8);
-
-            newUser.PublicKey = publicKeyBase64Encoded;
-            newUser.EncryptedPrivateKey = aesService.EncryptString(model.Password, privateKeyBase64Encoded);
 
             dataContext.Users.Add(newUser);
             dataContext.SaveChanges();
@@ -78,8 +66,6 @@ namespace PlanIt.Controllers
                 user = user.Id,
                 userName = user.Username,
                 token = jwtService.CreateJWT(user),
-                privateKey = aesService.DecryptString(model.Password, user.EncryptedPrivateKey),
-                publicKey = user.PublicKey,
             });
         }
 
