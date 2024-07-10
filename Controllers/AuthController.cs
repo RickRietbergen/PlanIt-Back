@@ -38,8 +38,10 @@ namespace PlanIt.Controllers
             CreatePasswordHash(model.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
             newUser.Username = model.Username;
+            newUser.Email = model.Email;
             newUser.PasswordHash = passwordHash;
             newUser.PasswordSalt = passwordSalt;
+            newUser.Role = Role.user;
 
             dataContext.Users.Add(newUser);
             dataContext.SaveChanges();

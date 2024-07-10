@@ -11,8 +11,8 @@ using PlanIt.Database;
 namespace PlanIt.Migrations
 {
     [DbContext(typeof(PlanItContext))]
-    [Migration("20240710103714_User")]
-    partial class User
+    [Migration("20240710110259_AddUsers")]
+    partial class AddUsers
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,7 +32,7 @@ namespace PlanIt.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Password")
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
